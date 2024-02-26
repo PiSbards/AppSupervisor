@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppSurpervisor.View.PageCadastrar" Title="Cadastro/Alteração de Funcionário">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry x:Name="txtCodigo" IsVisible="false" IsEnabled="False"/>
+            <Entry x:Name="txtNome" Keyboard="Default" Placeholder="Nome do Funcionário"/>
+            <Picker x:Name="pckSetor" HorizontalOptions="FillAndExpand" Title="Selecione o Setor do funcionário:">
+                <Picker.Items>
+                    <x:String>RH</x:String>
+                    <x:String>Atendimento Cliente</x:String>
+                    <x:String>Estoque</x:String>
+                    <x:String>TI</x:String>
+                </Picker.Items>
+            </Picker>
+            <Picker x:Name="pckTurno" HorizontalOptions="FillAndExpand" Title="Selecione o turno do funcionário:">
+                <Picker.Items>
+                    <x:String>Diurno</x:String>
+                    <x:String>Noturno</x:String>
+                </Picker.Items>
+            </Picker>
+            <StackLayout Orientation="Horizontal" Margin="20,0,20,0">
+                <Button x:Name="btSalvar" Text="Inserir" HorizontalOptions="FillAndExpand" Clicked="btSalvar_Clicked"/>
+                <Button x:Name="btExcluir" Text="Excluir" HorizontalOptions="FillAndExpand" IsVisible="false" Clicked="btExcluir_Clicked"/>
+                <Button x:Name="btCancelar" Text="Cancelar" HorizontalOptions="FillAndExpand" Clicked="btCancelar_Clicked"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
