@@ -7,7 +7,7 @@
             <StackLayout Orientation="Horizontal">
                 <Entry x:Name="txtNome" Keyboard="Default" Placeholder="Nome do Funcionário:" HorizontalOptions="StartAndExpand"/>
                 <Button x:Name="btLocalizar" Text="Localizar" Clicked="btLocalizar_Clicked"/>
-            </StackLayout>
+            </StackLayout>            
             <ListView x:Name="ListaFunc" HasUnevenRows="True" SeparatorColor="LightBlue" Margin="15" ItemSelected="ListaFunc_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>

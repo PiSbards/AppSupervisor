@@ -10,6 +10,7 @@ using Xamarin.Forms.Xaml;
 using AppSurpervisor.View;
 using AppSurpervisor.Services;
 using AppSurpervisor.Models;
+using System.Numerics;
 
 namespace AppSurpervisor.View
 {
@@ -27,7 +28,7 @@ namespace AppSurpervisor.View
             if (txtNome.Text != null) titulo = txtNome.Text;
             ServiceDbFuncionario dbFunc = new ServiceDbFuncionario(App.DbPath);
             ListaFunc.ItemsSource = dbFunc.Localizar(titulo);
-        }
+        }        
 
         private void btLocalizar_Clicked(object sender, EventArgs e)
         {
@@ -40,5 +41,6 @@ namespace AppSurpervisor.View
             MasterDetailPage p = (MasterDetailPage)Application.Current.MainPage;
             p.Detail = new NavigationPage(new PageCadastrar(func));
         }
+        
     }
 }

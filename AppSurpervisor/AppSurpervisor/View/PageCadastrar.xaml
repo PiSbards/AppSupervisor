@@ -16,7 +16,8 @@
             </Picker>
             <Picker x:Name="pckTurno" HorizontalOptions="FillAndExpand" Title="Selecione o turno do funcionário:">
                 <Picker.Items>
-                    <x:String>Diurno</x:String>
+                    <x:String>Matutino</x:String>
+                    <x:String>Vespertino</x:String>
                     <x:String>Noturno</x:String>
                 </Picker.Items>
             </Picker>
