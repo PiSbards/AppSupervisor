@@ -24,10 +24,10 @@ namespace AppSurpervisor.View
         }
         public void atualizaLista()
         {
-            string titulo = "";
-            if (txtNome.Text != null) titulo = txtNome.Text;
+            string filtro = "";
+            if (txtNome.Text != null) filtro = txtNome.Text;
             ServiceDbFuncionario dbFunc = new ServiceDbFuncionario(App.DbPath);
-            ListaFunc.ItemsSource = dbFunc.Localizar(titulo);
+            ListaFunc.ItemsSource = dbFunc.Localizar(filtro);
         }        
 
         private void btLocalizar_Clicked(object sender, EventArgs e)
@@ -41,6 +41,29 @@ namespace AppSurpervisor.View
             MasterDetailPage p = (MasterDetailPage)Application.Current.MainPage;
             p.Detail = new NavigationPage(new PageCadastrar(func));
         }
-        
+
+        private void pckSetor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            pckTurno.SelectedItem = default;
+            string setor = "";
+            if (txtNome.Text != null) setor = pckSetor.SelectedItem.ToString();
+            ServiceDbFuncionario dbFunc = new ServiceDbFuncionario(App.DbPath);
+            ListaFunc.ItemsSource = dbFunc.Localizar(setor);
+        }
+
+        private void pckTurno_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            pckSetor.SelectedItem = default;
+            string Turno = "";
+            if (txtNome.Text != null) Turno = pckTurno.SelectedItem.ToString();
+            ServiceDbFuncionario dbFunc = new ServiceDbFuncionario(App.DbPath);
+            ListaFunc.ItemsSource = dbFunc.Localizar(Turno);
+        }
+
+        private void btCancelar_Clicked(object sender, EventArgs e)
+        {
+            MasterDetailPage p = (MasterDetailPage)Application.Current.MainPage;
+            p.Detail = new NavigationPage(new PageHome());
+        }
     }
 }

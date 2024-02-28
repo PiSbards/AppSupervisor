@@ -92,8 +92,21 @@ namespace AppSurpervisor.Services
             List<Funcionario> lista = new List<Funcionario>();
             try
             {
-                var resp = from p in conn.Table<Funcionario>() where p.Turno.ToLower().Contains(Nome.ToLower()) select p;
-                lista = resp.ToList();
+                if (Nome == "RH" || Nome == "Atendimento Cliente" || Nome == "Estoque" || Nome == "TI")
+                {
+                    var resp = from p in conn.Table<Funcionario>() where p.Setor.ToLower().Contains(Nome.ToLower()) select p;
+                    lista = resp.ToList();
+                }                
+                else if (Nome == "Matutino" || Nome =="Vespertino" || Nome == "Noturno")
+                {
+                    var resp = from p in conn.Table<Funcionario>() where p.Turno.ToLower().Contains(Nome.ToLower()) select p;
+                    lista = resp.ToList();
+                }               
+                else
+                {
+                    var resp = from p in conn.Table<Funcionario>() where p.Nome.ToLower().Contains(Nome.ToLower()) select p;
+                    lista = resp.ToList();
+                }
             }
             catch (Exception ex)
             {

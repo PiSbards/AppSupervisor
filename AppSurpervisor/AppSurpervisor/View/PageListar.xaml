@@ -7,7 +7,25 @@
             <StackLayout Orientation="Horizontal">
                 <Entry x:Name="txtNome" Keyboard="Default" Placeholder="Nome do Funcionário:" HorizontalOptions="StartAndExpand"/>
                 <Button x:Name="btLocalizar" Text="Localizar" Clicked="btLocalizar_Clicked"/>
-            </StackLayout>            
+                <Button x:Name="btCancelar" Text="Cancelar" Clicked="btCancelar_Clicked"/>
+            </StackLayout>
+            <StackLayout>
+                <Picker x:Name="pckSetor" HorizontalOptions="FillAndExpand" Title="Selecione o Setor do funcionário:" SelectedIndexChanged="pckSetor_SelectedIndexChanged">
+                    <Picker.Items>
+                        <x:String>RH</x:String>
+                        <x:String>Atendimento Cliente</x:String>
+                        <x:String>Estoque</x:String>
+                        <x:String>TI</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Picker x:Name="pckTurno" HorizontalOptions="FillAndExpand" Title="Selecione o turno do funcionário:" SelectedIndexChanged="pckTurno_SelectedIndexChanged">
+                    <Picker.Items>
+                        <x:String>Matutino</x:String>
+                        <x:String>Vespertino</x:String>
+                        <x:String>Noturno</x:String>
+                    </Picker.Items>
+                </Picker>
+            </StackLayout>
             <ListView x:Name="ListaFunc" HasUnevenRows="True" SeparatorColor="LightBlue" Margin="15" ItemSelected="ListaFunc_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
