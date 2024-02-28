@@ -44,20 +44,40 @@ namespace AppSurpervisor.View
 
         private void pckSetor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            pckTurno.SelectedItem = default;
-            string setor = "";
-            if (txtNome.Text != null) setor = pckSetor.SelectedItem.ToString();
+            
+            string setor = pckSetor.SelectedItem.ToString();
+            string turno = pckTurno.Title.ToString();
             ServiceDbFuncionario dbFunc = new ServiceDbFuncionario(App.DbPath);
-            ListaFunc.ItemsSource = dbFunc.Localizar(setor);
+            if (turno != pckTurno.Title.ToString())
+            {
+                turno = pckTurno.SelectedItem.ToString();
+                
+                ListaFunc.ItemsSource = dbFunc.Localizar(setor,turno);
+            }
+            else
+            {
+                ListaFunc.ItemsSource = dbFunc.Localizar(setor);
+            }            
+            
         }
 
         private void pckTurno_SelectedIndexChanged(object sender, EventArgs e)
         {
-            pckSetor.SelectedItem = default;
-            string Turno = "";
-            if (txtNome.Text != null) Turno = pckTurno.SelectedItem.ToString();
+            
+            string Turno = pckTurno.SelectedItem.ToString();
+            string setor = pckSetor.Title.ToString();
             ServiceDbFuncionario dbFunc = new ServiceDbFuncionario(App.DbPath);
-            ListaFunc.ItemsSource = dbFunc.Localizar(Turno);
+            if (setor != pckSetor.Title.ToString())
+            {
+                setor = pckTurno.SelectedItem.ToString();
+
+                ListaFunc.ItemsSource = dbFunc.Localizar(setor, Turno);
+            }
+            else
+            {
+                ListaFunc.ItemsSource = dbFunc.Localizar(Turno);
+            }
+            
         }
 
         private void btCancelar_Clicked(object sender, EventArgs e)

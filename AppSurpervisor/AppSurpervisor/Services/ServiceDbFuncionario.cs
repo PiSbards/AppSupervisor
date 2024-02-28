@@ -114,7 +114,23 @@ namespace AppSurpervisor.Services
             }
             return lista;
         }
-        
+        public List<Funcionario> Localizar(string setor,string turno)
+        {
+            List<Funcionario> lista = new List<Funcionario>();
+            try
+            {
+                                
+                    var resp = from p in conn.Table<Funcionario>() where p.Setor.ToLower().Contains(setor.ToLower()) && p.Turno == turno select p;
+                    lista = resp.ToList();
+                               
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("Erro: {0}", ex.Message));
+            }
+            return lista;
+        }
+
         public Funcionario GetFunc(int id)
         {
             Funcionario m = new Funcionario();
